@@ -4,9 +4,10 @@
 from fabric.api import env, put, run
 from os.path import exists
 
-env.hosts = ['54.237.7.136', '54.85.9.73']  # IP addresses of web servers
 env.user = 'ubuntu'  # Username on the web servers
+env.hosts = ['54.237.7.136', '54.85.9.73']  # IP addresses of web servers
 env.key_filename = '~/.ssh/id_rsa'  # Private key for SSH
+
 
 def do_deploy(archive_path):
     """Distribute an archive to web servers."""
@@ -44,7 +45,7 @@ def do_deploy(archive_path):
 if __name__ == "__main__":
     import sys
     if len(sys.argv) != 2:
-        print("Usage: fab -f 2-do_deploy_web_static.py do_deploy:archive_path=<path_to_archive>")
+        print("Usage: fab -f do_deploy_web_static.py do_deploy:archive_path=<path_to_archive>")
         sys.exit(1)
     archive_path = sys.argv[1].split('=')[-1]
     do_deploy(archive_path)

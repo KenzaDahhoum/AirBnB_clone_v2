@@ -74,4 +74,3 @@ def deploy():
 
     # Call the do_deploy(archive_path) function, using the new path of the new archive
     return do_deploy(archive_path)
-
