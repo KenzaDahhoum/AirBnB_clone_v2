@@ -16,7 +16,7 @@ def do_deploy(archive_path):
     """
     if not exists(archive_path):
         return False  # Returns False if the file at archive_path doesn't exist
-    
+
     filename = archive_path.split('/')[-1]
     no_tgz = '/data/web_static/releases/' + "{}".format(filename.split('.')[0])
     tmp = "/tmp/" + filename
@@ -30,6 +30,7 @@ def do_deploy(archive_path):
         run("sudo rm -rf {}/web_static".format(no_tgz))
         run("sudo rm -rf /data/web_static/current")
         run("sudo ln -s {} /data/web_static/current".format(no_tgz))
+        print("New version deployed!")
         return True
     except Exception as e:
         print(f"Deployment failed: {e}")
