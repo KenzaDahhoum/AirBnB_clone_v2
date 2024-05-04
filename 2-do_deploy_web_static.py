@@ -29,7 +29,7 @@ def do_deploy(archive_path):
         run("sudo mv {}/web_static/* {}/".format(no_tgz, no_tgz))
         run("sudo rm -rf {}/web_static".format(no_tgz))
         run("sudo rm -rf /data/web_static/current")
-        run("sudo ln -s {}/ /data/web_static/current".format(no_tgz))
+        run("sudo ln -s {} /data/web_static/current".format(no_tgz))
         return True
     except Exception as e:
         print(f"Deployment failed: {e}")
