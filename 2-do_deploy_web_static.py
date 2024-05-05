@@ -6,9 +6,9 @@
 from fabric.api import *
 from os.path import exists
 
-env.hosts = ['54.237.7.136', '54.85.9.73']  # IP addresses of your web servers
+env.hosts = ['54.237.17.67', '54.84.68.225']  # IP addresses of web servers
 env.user = 'ubuntu'  # Username on the web servers
-env.key_filename = '~/.ssh/id_rsa'  # Path to your SSH private key
+env.key_filename = '~/.ssh/id_rsa'  # Path to  SSH private key
 
 
 def do_deploy(archive_path):
