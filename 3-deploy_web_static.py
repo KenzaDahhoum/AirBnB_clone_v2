@@ -8,7 +8,7 @@ from datetime import datetime
 from os.path import exists
 
 
-env.hosts = ['54.237.7.136', '54.85.9.73']
+env.hosts = ['54.237.17.67', '54.84.68.225']
 env.user = 'ubuntu'  # Username on the web servers
 env.key_filename = '~/.ssh/id_rsa'
 
