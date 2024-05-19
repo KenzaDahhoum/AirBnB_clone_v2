@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-""" Add third view func that redirects and has default val for variable """
+""" 4. Add fourth view function that displays var only if is integer """
 
 from flask import Flask
 
@@ -33,6 +33,13 @@ def python_text(text='is cool'):
     """ replace more text with another variable. """
     text = text.replace('_', ' ')
     return 'Python {}'.format(text)
+
+
+@app.route('/number/<int:n>')
+def number_text(n):
+    """ replace with int only if given int. """
+    n = str(n)
+    return '{} is a number'.format(n)
 
 
 if __name__ == '__main__':
