@@ -1,49 +1,44 @@
 #!/usr/bin/python3
-"""Script to start a Flask web application with number route"""
+""" 
+4. Add fourth view function that displays var only if it is an integer 
+"""
 
-from flask import Flask, abort
+from flask import Flask
+
 
 app = Flask(__name__)
 app.url_map.strict_slashes = False
 
 
 @app.route('/')
-def hello_hbnb():
-    """Returns 'Hello HBNB!'"""
+def hello_world():
+    """ Returns some text. """
     return 'Hello HBNB!'
 
 
 @app.route('/hbnb')
-def hbnb():
-    """Returns 'HBNB'"""
+def hello():
+    """ Return other text. """
     return 'HBNB'
 
 
 @app.route('/c/<text>')
-def c(text):
-    """Returns 'C ' followed by the value of the text variable"""
-    text = text.replace('_', ' ')
-    return 'C {}'.format(text)
+def c_text(text):
+    """ Replace underscores with spaces in text. """
+    return 'C {}'.format(text.replace('_', ' '))
 
 
 @app.route('/python/')
 @app.route('/python/<text>')
-def python(text='is cool'):
-    """Returns 'Python ' followed by the value of the text variable"""
-    text = text.replace('_', ' ')
-    return 'Python {}'.format(text)
+def python_text(text='is cool'):
+    """ Replace underscores with spaces in text. """
+    return 'Python {}'.format(text.replace('_', ' '))
 
 
 @app.route('/number/<int:n>')
-def number(n):
-    """Returns 'n is a number' only if n is an integer"""
+def number_text(n):
+    """ Display n is a number if n is an integer. """
     return '{} is a number'.format(n)
-
-
-@app.errorhandler(404)
-def not_found(error):
-    """Error handler for 404"""
-    return "Not Found", 404
 
 
 if __name__ == '__main__':
