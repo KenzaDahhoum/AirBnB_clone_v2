@@ -6,14 +6,14 @@ from sqlalchemy.orm import relationship
 
 from models.base_model import BaseModel, Base
 from models.city import City
+from models import storage
 
 
 class State(BaseModel, Base):
     """ State class """
     __tablename__ = 'states'
-    name = Column(
-        String(128), nullable=False
-    ) if os.getenv('HBNB_TYPE_STORAGE') == 'db' else ''
+    name = Column(String(128), nullable=False)
+
     if os.getenv('HBNB_TYPE_STORAGE') == 'db':
         cities = relationship(
             'City',
@@ -24,9 +24,9 @@ class State(BaseModel, Base):
         @property
         def cities(self):
             """Returns the cities in this State"""
-            from models import storage
             cities_in_state = []
             for value in storage.all(City).values():
                 if value.state_id == self.id:
                     cities_in_state.append(value)
             return cities_in_state
+

@@ -1,53 +1,60 @@
 #!/usr/bin/python3
-"""Script to start a Flask web application"""
+""" 5. Add fifth view func that displays HTML page if n is int """
 
-from flask import Flask, render_template
+from flask import Flask
+from flask import render_template
+
 
 app = Flask(__name__)
 app.url_map.strict_slashes = False
 
+
 @app.route('/')
-def hello():
-    """Displays 'Hello HBNB!'"""
+def hello_world():
+    """ Returns some text. """
     return 'Hello HBNB!'
 
+
 @app.route('/hbnb')
-def hbnb():
-    """Displays 'HBNB'"""
+def hello():
+    """ Return other text. """
     return 'HBNB'
 
+
 @app.route('/c/<text>')
-def c(text):
-    """Displays 'C ' followed by the value of the text variable"""
+def c_text(text):
+    """ replace text with variable. """
     text = text.replace('_', ' ')
     return 'C {}'.format(text)
 
+
 @app.route('/python/')
 @app.route('/python/<text>')
-def python(text='is cool'):
-    """Displays 'Python ' followed by the value of the text variable"""
+def python_text(text='is cool'):
+    """ replace more text with another variable. """
     text = text.replace('_', ' ')
     return 'Python {}'.format(text)
 
+
 @app.route('/number/<int:n>')
-def number(n):
-    """Displays 'n is a number' only if n is an integer"""
+def number_text(n):
+    """ replace with int only if given int. """
+    n = str(n)
     return '{} is a number'.format(n)
 
+
 @app.route('/number_template/<int:n>')
-def number_template(n):
-    """Displays an HTML page with H1 tag containing 'Number: n'"""
-    return render_template('6-number.html', n=n)
+def html_num(n):
+    """ display html if n is int. """
+    n = str(n)
+    return render_template('5-number.html', n=n)
+
 
 @app.route('/number_odd_or_even/<int:n>')
-def number_odd_or_even(n):
-    """Displays an HTML page with H1 tag containing 'Number: n is even|odd'"""
-    if n % 2 == 0:
-        odd_or_even = "even"
-    else:
-        odd_or_even = "odd"
-    return render_template('6-number_odd_or_even.html', n=n, odd_or_even=odd_or_even)
+def odd_or_even(n):
+    """ display different page depending on var given odd or even. """
+    return render_template('6-number_odd_or_even.html', n=n)
+
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000)
-
